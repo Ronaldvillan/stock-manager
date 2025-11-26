@@ -185,3 +185,102 @@ hr {
   margin-left: 10px;
   font-weight: bold;
 }
+
+/* Estilo para los iconos */
+.edit-btn,
+.delete-btn {
+  margin-right: 8px; /* Espacio entre iconos y texto */
+  cursor: pointer; /* Que sean clickables */
+  font-size: 18px; /* Tamaño visual limpio */
+  vertical-align: middle;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0;
+}
+
+/* Alinear la parte del nombre + iconos */
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espacio entre iconos y nombre */
+}
+
+/* Tarjeta del formulario */
+.form-card {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+}
+
+/* Título */
+.form-title {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Grupo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+/* Labels */
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Inputs */
+.form-input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+}
+
+/* Botones */
+.form-buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-save {
+  padding: 8px 14px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: #005fcc;
+}
+
+.btn-cancel {
+  padding: 8px 14px;
+  background: #ccc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: #bbb;
+}

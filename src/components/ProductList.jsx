@@ -1,57 +1,6 @@
-// // src/components/ProductList.jsx
-
-// import React from "react";
-
-// const ProductList = ({ products, onIncrement, onDecrement }) => {
-//     // Agrupar productos por categoría
-//     const grouped = products.reduce((acc, product) => {
-//         if (!acc[product.category]) acc[product.category] = [];
-//         acc[product.category].push(product);
-//         return acc;
-//     }, {});
-
-//     return (
-//         <div>
-//             {Object.keys(grouped).map((category) => (
-//                 <div key={category} style={{ marginBottom: "20px" }}>
-//                     <h3>{category.toUpperCase()}</h3>
-//                     <hr />
-//                     {grouped[category].map((product) => (
-//                         <div
-//                             key={product.id}
-//                             style={{
-//                                 display: "flex",
-//                                 alignItems: "center",
-//                                 justifyContent: "space-between",
-//                                 padding: "5px 0",
-//                             }}
-//                         >
-//                             <span>
-//                                 {product.name} .......... {product.qty}u (Límite: {product.limit}u)
-//                             </span>
-//                             <div>
-//                                 <button onClick={() => onDecrement(product.id)}>-</button>
-//                                 <button onClick={() => onIncrement(product.id)}>+</button>
-//                                 <span style={{ marginLeft: "10px" }}>
-//                                     {product.qty <= product.limit ? "⚠️ BAJO STOCK" : "⚪ OK"}
-//                                 </span>
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default ProductList;
-
-
-// src/components/ProductList.jsx
-
 import React from "react";
 
-const ProductList = ({ products, onIncrement, onDecrement }) => {
+const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete }) => {
     // Agrupar productos por categoría
     const grouped = products.reduce((acc, product) => {
         if (!acc[product.category]) acc[product.category] = [];
@@ -67,9 +16,26 @@ const ProductList = ({ products, onIncrement, onDecrement }) => {
                     <hr />
                     {grouped[category].map((product) => (
                         <div key={product.id} className="product-row">
+
+                            {/* ------------------------- */}
+                            {/*   ICONOS + NOMBRE          */}
+                            {/* ------------------------- */}
                             <div className="product-info">
-                                {product.name} .......... {product.qty}u (Límite: {product.limit}u)
+                                <span className="edit-btn" onClick={() => onEdit(product)}>
+                                    ✏️
+                                </span>
+                                <span className="delete-btn" onClick={() => onDelete(product.id)}>
+                                    🗑️
+                                </span>
+
+                                <span>
+                                    {product.name} .......... {product.qty}u (Lim : {product.limit}u)
+                                </span>
                             </div>
+
+                            {/* ------------------------- */}
+                            {/*        BOTONES ✔️         */}
+                            {/* ------------------------- */}
                             <div className="product-actions">
                                 <button onClick={() => onDecrement(product.id)}>-</button>
                                 <button onClick={() => onIncrement(product.id)}>+</button>
@@ -86,3 +52,4 @@ const ProductList = ({ products, onIncrement, onDecrement }) => {
 };
 
 export default ProductList;
+

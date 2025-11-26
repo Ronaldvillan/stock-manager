@@ -21,7 +21,7 @@ const ProductForm = ({ selectedProduct, onSave, onCancel }) => {
         e.preventDefault();
 
         const product = {
-            id: selectedProduct ? selectedProduct.id : Date.now(), // ID único
+            id: selectedProduct ? selectedProduct.id : Date.now(),
             name,
             category,
             qty: Number(qty),
@@ -29,7 +29,7 @@ const ProductForm = ({ selectedProduct, onSave, onCancel }) => {
         };
 
         onSave(product);
-        // Limpiar campos si es un nuevo producto
+
         if (!selectedProduct) {
             setName("");
             setCategory("");
@@ -39,30 +39,61 @@ const ProductForm = ({ selectedProduct, onSave, onCancel }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-            <div>
-                <label>Nombre: </label>
-                <input value={name} onChange={(e) => setName(e.target.value)} required />
+        <form className="form-card" onSubmit={handleSubmit}>
+            <h3 className="form-title">
+                {selectedProduct ? "Editar producto" : "Nuevo producto"}
+            </h3>
+
+            <div className="form-group">
+                <label>Nombre</label>
+                <input
+                    className="form-input"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>Categoría: </label>
-                <input value={category} onChange={(e) => setCategory(e.target.value)} required />
+
+            <div className="form-group">
+                <label>Categoría</label>
+                <input
+                    className="form-input"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>Cantidad: </label>
-                <input type="number" value={qty} onChange={(e) => setQty(e.target.value)} required />
+
+            <div className="form-group">
+                <label>Cantidad</label>
+                <input
+                    className="form-input"
+                    type="number"
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    required
+                />
             </div>
-            <div>
-                <label>Límite: </label>
-                <input type="number" value={limit} onChange={(e) => setLimit(e.target.value)} required />
+
+            <div className="form-group">
+                <label>Límite</label>
+                <input
+                    className="form-input"
+                    type="number"
+                    value={limit}
+                    onChange={(e) => setLimit(e.target.value)}
+                    required
+                />
             </div>
-            <div style={{ marginTop: "10px" }}>
-                <button type="submit">Guardar</button>
-                <button type="button" onClick={onCancel} style={{ marginLeft: "10px" }}>Cancelar</button>
+
+            <div className="form-buttons">
+                <button type="submit" className="btn-save">Guardar</button>
+                <button type="button" className="btn-cancel" onClick={onCancel}>
+                    Cancelar
+                </button>
             </div>
         </form>
     );
 };
 
 export default ProductForm;
-
