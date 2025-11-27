@@ -18,7 +18,7 @@ const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete }) =
                         <div key={product.id} className="product-row">
 
                             {/* ------------------------- */}
-                            {/*   ICONOS + NOMBRE          */}
+                            {/*   ICONOS + NOMBRE         */}
                             {/* ------------------------- */}
                             <div className="product-info">
                                 <span className="edit-btn" onClick={() => onEdit(product)}>
@@ -27,19 +27,17 @@ const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete }) =
                                 <span className="delete-btn" onClick={() => onDelete(product.id)}>
                                     🗑️
                                 </span>
-
-                                <span>
-                                    {product.name} .......... {product.qty}u (Lim : {product.limit}u)
-                                </span>
+                                <span>{product.name}</span>
                             </div>
 
                             {/* ------------------------- */}
-                            {/*        BOTONES ✔️         */}
+                            {/*       CANTIDAD + BOTONES + STOCK  */}
                             {/* ------------------------- */}
                             <div className="product-actions">
+                                <span className="product-qty">{product.qty}u</span>
                                 <button onClick={() => onDecrement(product.id)}>-</button>
                                 <button onClick={() => onIncrement(product.id)}>+</button>
-                                <span className={product.qty <= product.limit ? "low-stock" : "ok-stock"}>
+                                <span className={`stock-status ${product.qty <= product.limit ? "low-stock" : "ok-stock"}`}>
                                     {product.qty <= product.limit ? "⚠️ BAJO STOCK" : "⚪ OK"}
                                 </span>
                             </div>
