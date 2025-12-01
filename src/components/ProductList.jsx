@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete }) => {
+const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete, onAddStock }) => {
     // Agrupar productos por categoría
     const grouped = products.reduce((acc, product) => {
         if (!acc[product.category]) acc[product.category] = [];
@@ -36,7 +36,7 @@ const ProductList = ({ products, onIncrement, onDecrement, onEdit, onDelete }) =
                             <div className="product-actions">
                                 <span className="product-qty">{product.qty}u</span>
                                 <button onClick={() => onDecrement(product.id)}>-</button>
-                                <button onClick={() => onIncrement(product.id)}>+</button>
+                                <button onClick={() => onAddStock(product)}>+</button>
                                 <span className={`stock-status ${product.qty <= product.limit ? "low-stock" : "ok-stock"}`}>
                                     {product.qty <= product.limit ? "⚠️ BAJO STOCK" : "⚪ OK"}
                                 </span>
